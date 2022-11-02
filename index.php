@@ -15,6 +15,16 @@ if (isset($_GET["include"])) {
  $include = $_GET["include"];
  if ($include == "detail-buku") {
   include "include/detailbuku.php";
+ } elseif ($include == "detail-blog") {
+  include "include/detailblog.php";
+ } elseif ($include == "daftar-buku") {
+  include "include/daftarbuku.php";
+ } elseif ($include == "contact-us") {
+  include "include/contactus.php";
+ } elseif ($include == "blog") {
+  include "include/blog.php";
+ } elseif ($include == "about-us") {
+  include "include/aboutus.php";
  } else {
   include "include/index.php";
  }

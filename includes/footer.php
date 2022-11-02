@@ -3,6 +3,6 @@
     <p class="float-right">
       <a href="#" class="text-white">Back to top</a>
     </p>
-    <p>© <b>2021 Vokasi UB.</b> All rights reserved.</p>
+    <p style="color: white;">© <b>2022 Vokasi UB.</b> All rights reserved.</p>
   </div>
 </footer>

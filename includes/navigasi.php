@@ -13,22 +13,29 @@
             <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="aboutus.php">About Us</a>
+          <a class="nav-link" href="index.php?include=about-us">About Us</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-
             expanded="false">Kategori</a>
           <div class="dropdown-menu" aria-labelledby="dropdown07">
-            <a class="dropdown-item" href="daftarbuku.php">Java</a>
-            <a class="dropdown-item" href="daftarbuku.php">PHP</a>
-            <a class="dropdown-item" href="daftarbuku.php">HTML</a>
+            <?php
+$sql_kat   = "SELECT `id_kategori_buku`, `kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
+$query_kat = mysqli_query($koneksi, $sql_kat);
+while ($data_kat = mysqli_fetch_row($query_kat)) {
+ $id_kat = $data_kat[0];
+ $kat    = $data_kat[1];
+
+ ?>
+            <a class="dropdown-item" href="index.php?include=<?php echo $kat ?>"><?php echo $kat ?></a>
+            <?php } ?>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.php">Blog</a>
+          <a class="nav-link" href="index.php?include=blog">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contactus.php">Contact Us</a>
+          <a class="nav-link" href="index.php?include=contact-us">Contact Us</a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">

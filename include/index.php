@@ -141,8 +141,7 @@ while ($data_l = mysqli_fetch_row($query_l)) {
                   static bg-light">
             <strong class="d-inline-block mb-2 text-success">
               <?php echo $kategori_blog; ?></strong>
-            <h3 class="mb-0"><a href="index.php?include=detail-
-                  blog&data=<?php echo $id_blog; ?>">
+            <h3 class="mb-0"><a href="index.php?include=detail-blog&data=<?php echo $id_blog; ?>">
                 <?php echo $judul_blog; ?></a></h3>
             <div class="mb-1 text-muted">
               <?php echo $tanggal; ?></div>
