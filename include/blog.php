@@ -7,51 +7,27 @@
   <main role="main" class="container">
     <div class="row">
       <div class="col-md-9 blog-main">
+        <?php 
+            $sql_l = "SELECT `b`.`id_blog`, `b`.`judul`, `b`.`isi`, DATE_FORMAT(`b`.`tanggal`, '%d-%m-%Y'), `k`.`kategori_blog`, `u`.`nama` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user` = `u`.`id_user` ORDER BY `b`.`id_blog` DESC";
+            $query_l = mysqli_query($koneksi,$sql_l);
+            while($data_l = mysqli_fetch_row($query_l)){
+              $id_blog = $data_l[0];
+              $judul_blog = $data_l[1];
+              $isi_blog = $data_l[2];
+              $tanggal = $data_l[3];
+              $kategori_blog = $data_l[4];
+              $nama = $data_l[5];
+          ?>
         <div class="blog-post">
-          <h2 class="blog-post-title"><a href="#">Cras mattis consectetur purus sit amet fermentum</a></h2>
-          <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+          <h2 class="blog-post-title"><a href="#"><?php echo $judul_blog;?></a></h2>
+          <p class="blog-post-meta"><?php echo $tanggal;?> by <a href="#"><?php echo $nama;?></a></p>
           <!--<img src="slideshow/slide-1.jpg" class="img-fluid" alt="Responsive image"><br><br>-->
 
-          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur
-            ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-            Posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-            Aenean lacinia bibendum nulla sed consectetur.</p>
-          <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-          <a href="detailblog.php" class="btn btn-primary stretched-link">Continue reading..</a>
+          <p><?php echo $isi_blog;?></p>
+          <a href="index.php?include=detail-blog&data=<?php echo $id_blog;?>"
+            class="btn btn-primary stretched-link">Continue reading..</a>
         </div><!-- /.blog-post --><br><br>
-
-        <div class="blog-post">
-          <h2 class="blog-post-title"><a href="#">Cras mattis consectetur purus sit amet fermentum</a></h2>
-          <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-          <!--<img src="slideshow/slide-2.jpg" class="img-fluid" alt="Responsive image"><br><br>-->
-
-          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis
-            euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-            fermentum massa justo sit amet risus.</p>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit
-            amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-          <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero,
-            a pharetra augue.</p>
-          <a href="detailblog.php" class="btn btn-primary stretched-link">Continue reading..</a>
-        </div><!-- /.blog-post --><br><br>
-
-        <div class="blog-post">
-          <h2 class="blog-post-title"><a href="#">Etiam porta sem malesuada magna mollis euismod</a></h2>
-          <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-
-          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis
-            euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-            fermentum massa justo sit amet risus.</p>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit
-            amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-          <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero,
-            a pharetra augue.</p>
-          <a href="detailblog.php" class="btn btn-primary stretched-link">Continue reading..</a>
-        </div><!-- /.blog-post --><br><br>
-
+        <?php }?>
         <nav class="blog-pagination">
           <a class="btn btn-outline-primary" href="#">Older</a>
           <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
@@ -61,14 +37,20 @@
 
       <aside class="col-md-3 blog-sidebar">
 
-        <div class="p-4">
+        <div class="pl-4 pb-4">
           <h4 class="font-italic">Categories</h4>
           <ol class="list-unstyled mb-0">
-            <li><a href="#">Umum</a></li>
-            <li><a href="#">PHP</a></li>
-            <li><a href="#">Java</a></li>
-            <li><a href="#">Database</a></li>
-            <li><a href="#">Techno</a></li>
+            <?php 
+                  $sql_k = "SELECT `id_kategori_blog`,`kategori_blog` FROM `kategori_blog` ORDER BY `kategori_blog`";
+                  $query_k = mysqli_query($koneksi,$sql_k);
+                  while($data_k = mysqli_fetch_row($query_k)){
+                    $id_kat = $data_k[0];
+                    $nama_kat = $data_k[1];
+                ?>
+            <li><a href="index.php?include=daftar-blog-kategori&data=<?php echo $id_kat;?>">
+                <?php echo $nama_kat;?></a></li>
+            <?php }?>
+          </ol>
         </div>
 
         <div class="p-4">

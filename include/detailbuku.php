@@ -118,8 +118,7 @@ while ($data_bt = mysqli_fetch_row($query_bt)) {
  $id_buku_terkait    = $data_bt[0];
  $judul_buku_terkait = $data_bt[1];
  ?>
-            <li><a href="index.php?include=detail-buku&
-       data=<?php echo $id_buku_terkait; ?>">
+            <li><a href="index.php?include=detail-buku&data=<?php echo $id_buku_terkait; ?>">
                 <?php echo $judul_buku_terkait; ?></a></li>
             <?php } ?>
           </ol>
@@ -139,8 +138,7 @@ while ($data_k = mysqli_fetch_row($query_k)) {
  $id_kat   = $data_k[0];
  $nama_kat = $data_k[1];
  ?>
-            <li><a href="index.php?include=daftar-buku-kategori&
-          data=<?php echo $id_kat; ?>">
+            <li><a href="index.php?include=daftar-buku-kategori&data=<?php echo $id_kat; ?>">
                 <?php echo $nama_kat; ?></a></li>
             <?php } ?>
           </ol>
@@ -159,8 +157,7 @@ while ($data_t = mysqli_fetch_row($query_t)) {
  $id_tag   = $data_t[0];
  $nama_tag = $data_t[1];
  ?>
-            <li><a href="index.php?include=daftar-buku-tag&
-         data=<?php echo $id_tag; ?>">
+            <li><a href="index.php?include=daftar-buku-tag&data=<?php echo $id_tag; ?>">
                 <?php echo $nama_tag; ?></a></li>
             <?php } ?>
           </ol>

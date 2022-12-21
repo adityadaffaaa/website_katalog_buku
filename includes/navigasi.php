@@ -6,11 +6,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample07">
+    <div class="collapse navbar-collapse" idatenavbarExample07>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home
-            <span class="sr-only">(current)</span></a>
+          <a href="index.php" class="nav-link">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php?include=about-us">About Us</a>
@@ -19,16 +18,18 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-
             expanded="false">Kategori</a>
           <div class="dropdown-menu" aria-labelledby="dropdown07">
-            <?php
-$sql_kat   = "SELECT `id_kategori_buku`, `kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
-$query_kat = mysqli_query($koneksi, $sql_kat);
-while ($data_kat = mysqli_fetch_row($query_kat)) {
- $id_kat = $data_kat[0];
- $kat    = $data_kat[1];
-
- ?>
-            <a class="dropdown-item" href="index.php?include=<?php echo $kat ?>"><?php echo $kat ?></a>
-            <?php } ?>
+            <?php 
+                        $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
+                        $query_k = mysqli_query($koneksi, $sql_k);
+                        while($data_k = mysqli_fetch_row($query_k)){
+                                $id_kat = $data_k[0];
+                                $kat = $data_k[1];
+                    ?>
+            <a class="dropdown-item"
+              href="index.php?include=daftar-buku-kategori&data=<?php echo $id_kat;?>"><?php echo $kat;?></a>
+            <?php }?>
+            <!-- <a class="dropdown-item" href="index.php?include=daftar-buku">PHP</a>
+                    <a class="dropdown-item" href="index.php?include=daftar-buku">HTML</a> -->
           </div>
         </li>
         <li class="nav-item">
@@ -39,7 +40,7 @@ while ($data_kat = mysqli_fetch_row($query_kat)) {
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
